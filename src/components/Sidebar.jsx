@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Box, Typography, Select, MenuItem, TextField, Button } from '@mui/material';
 import FilterListIcon from '@mui/icons-material/FilterList';
 
+const categories = ["electronics", "clothing", "accessories", "footwear", "home", "furniture", "jewelry", "sports"];
+
 const Sidebar = ({ onFilterChange }) => {
   const [category, setCategory] = useState('');
   const [minPrice, setMinPrice] = useState('');
@@ -26,25 +28,38 @@ const Sidebar = ({ onFilterChange }) => {
       <Box display="flex" alignItems="center" mb={2}>
         <FilterListIcon color="primary" />
         <Typography variant="h6" fontWeight="bold" ml={1}>
-          Filtreler
+          Filters
         </Typography>
       </Box>
 
       {/* Kategori Seçimi */}
       <Box mb={3}>
         <Typography variant="subtitle1" mb={1} color="text.secondary">
-          Kategori
+          Category
         </Typography>
         <Select
           fullWidth
           value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          onChange={(e) => {
+            setCategory(e.target.value)
+          }}
+          MenuProps={{
+            PaperProps: {
+              style: {
+                maxHeight: 200, // Maksimum yükseklik vererek kaydırmayı sınırlandırıyoruz
+              },
+            },
+            disableScrollLock: true, // Menü açıldığında body kaymasını engeller
+          }}
           variant="outlined"
           color="primary"
         >
-          <MenuItem value="">Tüm Kategoriler</MenuItem>
-          <MenuItem value="electronics">Elektronik</MenuItem>
-          <MenuItem value="clothing">Giyim</MenuItem>
+          <MenuItem value="">All Categories</MenuItem>
+          {categories.map((cat) => (
+            <MenuItem key={cat} value={cat}>
+              {cat.charAt(0).toUpperCase() + cat.slice(1)}
+            </MenuItem>
+        ))}
           {/* Ek kategoriler burada eklenebilir */}
         </Select>
       </Box>
@@ -52,7 +67,7 @@ const Sidebar = ({ onFilterChange }) => {
       {/* Fiyat Aralığı */}
       <Box mb={3}>
         <Typography variant="subtitle1" mb={1} color="text.secondary">
-          Fiyat Aralığı
+          Price Range
         </Typography>
         <Box display="flex" gap={1}>
           <TextField
@@ -85,7 +100,7 @@ const Sidebar = ({ onFilterChange }) => {
           textTransform: 'none',
         }}
       >
-        Filtreleri Uygula
+          Submit Filters
       </Button>
     </Box>
   );

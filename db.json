@@ -1,20 +1,165 @@
 {
-    "products": [
+  "products": [
       {
-        "id": 1,
-        "title": "Product 1",
-        "price": 29.99,
-        "popularity": 100,
-        "category": "electronics",
-        "image": "https://via.placeholder.com/150"
+          "id": 1,
+          "title": "Desktop Computer",
+          "price": 2999.99,
+          "popularity": 90,
+          "category": "electronics",
+          "image": "https://cdn.qukasoft.com/f/752658/bzR6WmFtNG0vcUp3ZUdGdEg4MXZKZWxESUE9PQ/p/intel-i5-8gb-120gb-ssd-19-monitorlu-masaustu-bilgisayar-134137786-sw1000sh1000.webp"
       },
       {
-        "id": 2,
-        "title": "Product 2",
-        "price": 59.99,
-        "popularity": 75,
-        "category": "clothing",
-        "image": "https://via.placeholder.com/150"
+          "id": 2,
+          "title": "Sweater",
+          "price": 149.99,
+          "popularity": 80,
+          "category": "clothing",
+          "image": "https://static.ticimax.cloud/cdn-cgi/image/width=-,quality=85/41658/uploads/urunresimleri/buyuk/kadin-sifir-yaka-jakarli-yun-kazak-fum--e8c1-.jpg"
+      },
+      {
+          "id": 3,
+          "title": "Laptop",
+          "price": 4999.99,
+          "popularity": 85,
+          "category": "electronics",
+          "image": "https://img-itopya.mncdn.com/cdn/1000/yeni-proje-2024-05-09t170913819-fdfd06.jpg"
+      },
+      {
+          "id": 4,
+          "title": "Smartphone",
+          "price": 3999.99,
+          "popularity": 95,
+          "category": "electronics",
+          "image": "https://www.jebinde.com/Content/ProductImage/Original/iphone-11-128-gb-akilli-telefon-mor-3.jpg?width=1000&height=1000&bgcolor=white"
+      },
+      {
+          "id": 5,
+          "title": "Bag",
+          "price": 199.99,
+          "popularity": 70,
+          "category": "accessories",
+          "image": "https://www.ipekevi.com/siyah-monogram-zincir-detayli-omuz-cantasi-7700000010201-canta-ipekevi-21764-10-B.jpg"
+      },
+      {
+          "id": 6,
+          "title": "Tablet",
+          "price": 2999.99,
+          "popularity": 75,
+          "category": "electronics",
+          "image": "https://cdn.cimri.io/pictures/article/original/46/46343.jpg"
+      },
+      {
+          "id": 7,
+          "title": "Shoes",
+          "price": 249.99,
+          "popularity": 65,
+          "category": "footwear",
+          "image": "https://cdn.tozlu.com/img/1200/85/yuksek-taban-gunluk-kadin-spor-ayakkabi-1a598-1b013.webp"
+      },
+      {
+          "id": 8,
+          "title": "Shirt",
+          "price": 129.99,
+          "popularity": 60,
+          "category": "clothing",
+          "image": "https://static.ticimax.cloud/5334/uploads/urunresimleri/buyuk/mavi-regular-fit-erkek-gomlek-5592-713-e0.jpeg"
+      },
+      {
+          "id": 9,
+          "title": "Headphones",
+          "price": 99.99,
+          "popularity": 85,
+          "category": "electronics",
+          "image": "https://static.ticimax.cloud/cdn-cgi/image/width=-,quality=85/55525/uploads/urunresimleri/buyuk/cd31f0e5-a531-438d-b72b-86ea402f3167-22573-.jpg"
+      },
+      {
+          "id": 10,
+          "title": "Desk Lamp",
+          "price": 89.99,
+          "popularity": 50,
+          "category": "home",
+          "image": "https://koctas-img.mncdn.com/mnpadding/300/300/ffffff/productimages/5000357510/5000357510_1_MC/8955315191858_1698303708876.jpg"
+      },
+      {
+          "id": 11,
+          "title": "Jacket",
+          "price": 299.99,
+          "popularity": 75,
+          "category": "clothing",
+          "image": "https://cdn.dsmcdn.com/ty1547/product/media/images/ty1545/prod/QC/20240915/19/e4d6e5a6-db54-3572-8400-3630fc443a14/1_org.jpg"
+      },
+      {
+          "id": 12,
+          "title": "Keyboard",
+          "price": 149.99,
+          "popularity": 80,
+          "category": "electronics",
+          "image": "https://st-troy.mncdn.com/mnresize/1500/1500/Content/media/ProductImg/original/5099206101951-logitech-pop-kablosuz-klavye-lila-637959156819464558.jpeg"
+      },
+      {
+          "id": 13,
+          "title": "Sofa",
+          "price": 1999.99,
+          "popularity": 60,
+          "category": "furniture",
+          "image": "https://ocasso.com.tr/wp-content/uploads/2024/03/861a2860.webp"
+      },
+      {
+          "id": 14,
+          "title": "Ring",
+          "price": 499.99,
+          "popularity": 40,
+          "category": "jewelry",
+          "image": "https://mydiamond.com.tr/image/cache/catalog/MossAgate/oval-moss-agate-tasarim-altin-yuzuk-7-1000x1000.jpg"
+      },
+      {
+          "id": 15,
+          "title": "Mouse",
+          "price": 79.99,
+          "popularity": 85,
+          "category": "electronics",
+          "image": "https://m.media-amazon.com/images/I/41hQB7KTFjL._AC_UF1000,1000_QL80_.jpg"
+      },
+      {
+          "id": 16,
+          "title": "Sofa Set",
+          "price": 4999.99,
+          "popularity": 55,
+          "category": "furniture",
+          "image": "https://www.hume.com.tr/images/urunler/Nita-Modern-Koltuk-Takimi-resim-592.jpeg"
+      },
+      {
+          "id": 17,
+          "title": "T-Shirt",
+          "price": 69.99,
+          "popularity": 45,
+          "category": "clothing",
+          "image": "https://004406.a-cdn.akinoncloud.com/products/2023/02/23/268770/c4a68209-774b-4670-abe0-1ef9f3761624_size555x830_quality90_cropCenter.jpg"
+      },
+      {
+          "id": 18,
+          "title": "Bicycle",
+          "price": 1499.99,
+          "popularity": 60,
+          "category": "sports",
+          "image": "https://ideacdn.net/shop/dn/70/myassets/products/756/geotech-trip-28-sehir-bisikleti-siyah-mavi.jpg?revision=1721483240"
+      },
+      {
+          "id": 19,
+          "title": "Coat",
+          "price": 399.99,
+          "popularity": 75,
+          "category": "clothing",
+          "image": "https://cache.manuka.com.tr/product/cache/747x1121_-52108-97-B.jpg"
+      },
+      {
+          "id": 20,
+          "title": "Bracelet",
+          "price": 299.99,
+          "popularity": 50,
+          "category": "jewelry",
+          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMKbsSOjfPyRid7kkEfsjwe4ZJwvgnJtWvzw&s"
       }
-    ]
-  }
+  ]
+}
+

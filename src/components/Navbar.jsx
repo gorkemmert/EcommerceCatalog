@@ -1,121 +1,93 @@
-import { useState } from "react"
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
-import SearchIcon from '@mui/icons-material/Search';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { logo, menu, close } from "../assets"
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  logo,
+  menu,
+  close,
+  AccountCircleOutlinedIcon,
+  FavoriteBorderOutlinedIcon,
+  ShoppingCartOutlinedIcon,
+} from "../assets";
 
 const Navbar = () => {
-
     const [open, setOpen] = useState(false);
-    const handleClick = () => setOpen(!open)
-    
-  return (
-    <div className="w-full h-[120px] z-10 bg-[#ffffff] fixed drop-shadow-lg">
-        <div className="flex justify-between items-center w-full h-full md:max-w-[1240px] m-auto">
-            <div className="flex items-center">
-                <img src={logo} alt="logo" className="xs:ml-10 sm:ml-10 ss:ml-10 md:ml-3 ml-3 opacity-[60%] w-full h-[108px]"/>
-            </div>
-            <div className="flex items-center">
-                <div className="w-full">
-                    <TextField
-                        fullWidth
-                        label="Search products"
-                        id="search"
-                        slotProps={{
-                        input: {
-                            endAdornment: (
-                            <InputAdornment position="end">
-                                <SearchIcon />
-                            </InputAdornment>
-                            ),
-                        },
-                        }}
-                    />
-                </div>
-            </div>
-            <div className="hidden sm:flex sm:mr-10 md:mr-10 xs:mr-10">
-                <Box
-                    sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: 2,
-                        }}
-                        >
-                    {/* Giriş Yap / Bu kısım görüntü olarak koyulmuştur herhangi bir fonksiyonu yoktur*/}
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1}}>
-                        <AccountCircleOutlinedIcon />
-                        <Typography >
-                            Giriş Yap
-                        </Typography>
-                    </Box>
+    const handleClick = () => setOpen(!open);
+    const navigate = useNavigate();
+    const cartItems = useSelector((state) => state.cart);
+    const cartItemCount = cartItems.length;
 
-                    {/* Favorilerim  Bu kısım görüntü olarak koyulmuştur herhangi bir fonksiyonu yoktur */}
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <FavoriteBorderOutlinedIcon />
-                        <Typography>
-                        Favorilerim
-                        </Typography>
-                    </Box>
-
-                    {/* Sepetim */}
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <IconButton>
-                        <Badge badgeContent={2} color="error">
-                            <ShoppingCartOutlinedIcon />
-                        </Badge>
-                        </IconButton>
-                        <Typography>
-                        Sepetim
-                        </Typography>
-                    </Box>
-                </Box>
+    return (
+        <div className="w-full h-[120px] z-20 bg-white fixed drop-shadow-lg">
+        <div className="flex justify-between items-center w-full h-full md:max-w-[1240px] m-auto px-4">
+            {/* Logo */}
+            <div onClick={()=>navigate('/')} className="flex items-center">
+            <img
+                src={logo}
+                alt="logo"
+                className="opacity-60 w-auto h-[108px] xs:ml-10 sm:ml-10 ss:ml-10 md:ml-3 ml-3"
+            />
             </div>
-            <div className="sm:hidden" onClick={handleClick}>
-                <img src={!open ? menu : close} alt="menu" className="w-[28px] h-[28px] object-contain mr-10"/>
+
+            {/* Icons Section */}
+            <div className="hidden sm:flex items-center space-x-6">
+            {/* Giriş Yap */}
+            <div className="flex items-center space-x-1 cursor-pointer">
+                <AccountCircleOutlinedIcon className="text-gray-500" />
+                <span className="text-gray-600">Sign in</span>
+            </div>
+
+            {/* Favorilerim */}
+            <div className="flex items-center space-x-1 cursor-pointer">
+                <FavoriteBorderOutlinedIcon className="text-gray-500" />
+                <span className="text-gray-600">My Favorites</span>
+            </div>
+
+            {/* Sepetim */}
+            <div onClick={()=>navigate('/carts')} className="flex items-center space-x-1 cursor-pointer relative">
+                <ShoppingCartOutlinedIcon className="text-gray-500" />
+                <span className="text-gray-600">My Cart</span>
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full px-1 text-xs">{cartItemCount}</span>
+            </div>
+            </div>
+
+            {/* Mobile Menu Icon */}
+            <div className="sm:hidden cursor-pointer" onClick={handleClick}>
+            <img
+                src={!open ? menu : close}
+                alt="menu"
+                className="w-6 h-6 mr-4"
+            />
             </div>
         </div>
-        <div className={open ? "w-full absolute bg-[#ffffff] p-2 md:hidden": "hidden"}>
-            <Box
-                className="flex flex-col items-center gap-y-2"
-                    >
-                {/* Giriş Yap / Bu kısım görüntü olarak koyulmuştur herhangi bir fonksiyonu yoktur*/}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, width:100, marginLeft: 2, marginBottom: 1}}>
-                    <AccountCircleOutlinedIcon color="primary"/>
-                    <Typography >
-                        Giriş Yap
-                    </Typography>
-                </Box>
 
-                {/* Favorilerim  Bu kısım görüntü olarak koyulmuştur herhangi bir fonksiyonu yoktur */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 ,width:100, marginLeft: 2}}>
-                    <FavoriteBorderOutlinedIcon color="primary"/>
-                    <Typography>
-                    Favorilerim
-                    </Typography>
-                </Box>
+        {/* Mobile Dropdown Menu */}
+        <div
+            className={`${
+            open ? "flex flex-col justify-center items-center z-0 relative" : "hidden"
+            } sm:hidden absolute bg-white w-full px-4 py-4 shadow-md`}
+        >
+            {/* Giriş Yap */}
+            <div className="flex items-center space-x-1 py-2 cursor-pointer min-w-32">
+            <AccountCircleOutlinedIcon className="text-gray-500" />
+            <span className="text-gray-600">Sign in</span>
+            </div>
 
-                {/* Sepetim */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 , width:100}}>
-                    <IconButton>
-                    <Badge badgeContent={2} color="error">
-                        <ShoppingCartOutlinedIcon color="primary"/>
-                    </Badge>
-                    </IconButton>
-                    <Typography>
-                    Sepetim
-                    </Typography>
-                </Box>
-            </Box>
+            {/* Favorilerim */}
+            <div className="flex items-center space-x-1 py-2 cursor-pointer min-w-32">
+            <FavoriteBorderOutlinedIcon className="text-gray-500" />
+            <span className="text-gray-600">My Favorites</span>
+            </div>
+
+            {/* Sepetim */}
+            <div onClick={()=>navigate('/carts')} className="flex items-center space-x-1 py-2 cursor-pointer relative min-w-32">
+            <ShoppingCartOutlinedIcon className="text-gray-500" />
+            <span className="text-gray-600">My Cart</span>
+            <span className="absolute -top-0 right-6 bg-red-500 text-white rounded-full px-1 text-xs">{cartItemCount}</span>
+            </div>
         </div>
-    </div>
-  )
-}
+        </div>
+    );
+};
 
-export default Navbar
+export default Navbar;

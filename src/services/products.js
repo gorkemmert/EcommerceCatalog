@@ -1,10 +1,10 @@
 import { useQuery } from 'react-query';
 
-export const useFetchProducts = (filters) => {
-  return useQuery(['products', filters], async () => {
+export const useFetchProducts = (filters, searchTerm) => {
+  return useQuery(['products', filters, searchTerm], async () => {
     let query = 'http://localhost:5000/products?';
 
-    // Filtreleri uyguluyoruz
+    // Filtreleri ve searchTerm'i sorguya ekliyoruz
     if (filters.category) {
       query += `category=${filters.category}&`;
     }
@@ -13,6 +13,9 @@ export const useFetchProducts = (filters) => {
     }
     if (filters.maxPrice) {
       query += `price_lte=${filters.maxPrice}&`;
+    }
+    if (searchTerm) {
+      query += `q=${searchTerm}&`; // Arama terimi
     }
 
     const response = await fetch(query);
