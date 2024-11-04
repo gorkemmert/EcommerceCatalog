@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+import React from 'react';
 import { useMemo } from 'react';
 import CartItem from './CartItem';
 import Summary from './Summary';

@@ -1,7 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Typography, Select, MenuItem, TextField, Button } from '@mui/material';
-import FilterListIcon from '@mui/icons-material/FilterList';
 
 const categories = ["electronics", "clothing", "accessories", "footwear", "home", "furniture", "jewelry", "sports"];
 
@@ -15,72 +13,55 @@ const Sidebar = React.memo(({ onFilterChange }) => {
   }, [onFilterChange, category, minPrice, maxPrice]);
 
   return (
-    <Box sx={{ p: 3, bgcolor: 'white', borderRadius: 2, width: 280 }}>
-      <Box display="flex" alignItems="center" mb={2}>
-        <FilterListIcon color="primary" />
-        <Typography variant="h6" fontWeight="bold" ml={1}>
-          Filters
-        </Typography>
-      </Box>
+    <div className="p-6 bg-white rounded-lg w-72">
+      <div className="flex items-center mb-4">
+        <h2 className="ml-2 text-xl font-bold">Filters</h2>
+      </div>
 
-      <Box mb={3}>
-        <Typography variant="subtitle1" mb={1} color="text.secondary">
-          Category
-        </Typography>
-        <Select
-          fullWidth
+      <div className="mb-4">
+        <label htmlFor="category" className="block text-gray-600 mb-1">Category</label>
+        <select
+          id="category"
+          className="w-full border rounded-lg p-2 outline-none focus:ring-2 focus:ring-blue-500"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          MenuProps={{
-            PaperProps: { style: { maxHeight: 200 } },
-            disableScrollLock: true,
-          }}
-          variant="outlined"
-          color="primary"
         >
-          <MenuItem value="">All Categories</MenuItem>
+          <option value="">All Categories</option>
           {categories.map((cat) => (
-            <MenuItem key={cat} value={cat}>
+            <option key={cat} value={cat}>
               {cat.charAt(0).toUpperCase() + cat.slice(1)}
-            </MenuItem>
+            </option>
           ))}
-        </Select>
-      </Box>
+        </select>
+      </div>
 
-      <Box mb={3}>
-        <Typography variant="subtitle1" mb={1} color="text.secondary">
-          Price Range
-        </Typography>
-        <Box display="flex" gap={1}>
-          <TextField
+      <div className="mb-4">
+        <label className="block text-gray-600 mb-1">Price Range</label>
+        <div className="flex gap-2">
+          <input
             type="number"
             placeholder="Min"
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
-            variant="outlined"
-            fullWidth
+            className="w-full border rounded-lg p-2 outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <TextField
+          <input
             type="number"
             placeholder="Max"
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
-            variant="outlined"
-            fullWidth
+            className="w-full border rounded-lg p-2 outline-none focus:ring-2 focus:ring-blue-500"
           />
-        </Box>
-      </Box>
+        </div>
+      </div>
 
-      <Button
+      <button
         onClick={handleFilterChange}
-        variant="contained"
-        color="primary"
-        fullWidth
-        sx={{ fontWeight: 'bold', py: 1.5, textTransform: 'none' }}
+        className="w-full bg-blue-500 text-white font-bold py-2 rounded-lg mt-2 hover:bg-blue-600 transition-all"
       >
         Submit Filters
-      </Button>
-    </Box>
+      </button>
+    </div>
   );
 });
 
@@ -89,4 +70,3 @@ Sidebar.propTypes = {
 };
 
 export default Sidebar;
-

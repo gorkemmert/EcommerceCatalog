@@ -10,7 +10,10 @@ export default [
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.jest, 
+      },
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
@@ -33,8 +36,10 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
-      'react/prop-types': 'off', // PropTypes hatalarını devre dışı bırakır
-      'react/display-name': 'off', // Display name hatalarını devre dışı bırakır
+      'react/prop-types': 'off', 
+      'react/display-name': 'off', 
+      'jest/no-disabled-tests': 'off',
+      'testing-library/no-debugging-utils': 'off',
     },
   },
 ];

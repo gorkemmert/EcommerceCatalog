@@ -12,7 +12,7 @@ const CartItem = ({ item }) => {
     }, [dispatch, item]);
   
     return (
-        <div className="border rounded-md p-4 mb-4">
+        <div className="border rounded-md p-4 mb-4" data-testid="cart-item">
         <div className="flex items-center">
             <h2 className="text-lg font-semibold mr-2">{item.title}</h2>
             <span className="bg-blue-100 text-blue-500 px-2 py-1 text-xs rounded">{item.storeType}</span>
