@@ -1,15 +1,16 @@
 
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { addToCart} from '../store/cartSlice';
 
-const ProductCard = (props) => {
+const ProductCard = React.memo((props) => {
   const { product } = props;
   const dispatch = useDispatch();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = useCallback(() => {
     dispatch(addToCart(product));
-  };
+  }, [dispatch, product]);
 
 
   return (
@@ -31,7 +32,7 @@ const ProductCard = (props) => {
       </div>
     </div>
   );
-};
+});
 
 ProductCard.propTypes = {
   product: PropTypes.shape({

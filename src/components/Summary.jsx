@@ -1,11 +1,11 @@
-/* eslint-disable react/prop-types */
-
+import React, { useMemo } from "react";
 
 const Summary = ({ items }) => {
-  const subtotal = items.reduce((sum, item) => sum + item.price, 0);
 
+  // Memoize calculations to avoid recalculating on every render
+  const subtotal = useMemo(() => items.reduce((sum, item) => sum + item.price, 0), [items]);
   const shipping = 39.99;
-  const total = subtotal + shipping;
+  const total = useMemo(() => subtotal + shipping, [subtotal]);
 
   return (
     <div className="p-4 border rounded-md">
@@ -27,4 +27,5 @@ const Summary = ({ items }) => {
   );
 };
 
-export default Summary;
+// Memoize Summary component to avoid re-renders unless items change
+export default React.memo(Summary);
