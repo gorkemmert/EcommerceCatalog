@@ -45,7 +45,6 @@ const ProductList = () => {
     );
   }, [filteredData, sortOrder]);
 
-  if (isError) return <p className="text-red-500">Bir hata oluştu!</p>;
 
   return (
     <div className="w-full bg-gray-100 min-h-screen mt-[120px] z-0">
@@ -97,14 +96,24 @@ const ProductList = () => {
 
         <div className="flex">
           <Sidebar onFilterChange={handleFilterChange} />
+          
+              
+           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 w-full">
+
+            {/* we show the error and loding operations returned from the request where we list products  */}
             {isLoading ? (
-              <p>Loading...</p>
+             
+              <div className="text-blue-700 animate-pulse mt-20 ml-20">Yükleniyor...</div>
+              
+            )  : isError ? (
+                <p className="text-red-700 animate-pulse mt-20 ml-20">⚠️ Bir hata oluştu!</p>
             ) : (
               sortedData.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))
-            )}
+            )
+            }
           </div>
         </div>
       </div>
