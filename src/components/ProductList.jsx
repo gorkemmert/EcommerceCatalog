@@ -1,9 +1,9 @@
-import { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { useFetchProducts } from '../services/products';
 import ProductCard from './ProductCard';
 import Sidebar from './Sidebar';
 import Banner from './Banner';
-import { SearchIcon } from '../assets';
+import { search } from '../assets';
 
 const ProductList = () => {
   const [filters, setFilters] = useState({});
@@ -74,6 +74,11 @@ const ProductList = () => {
 
           {/* Search Input */}
           <div className="hidden sm:flex items-center w-full max-w-[300px] mx-4 relative">
+            <img
+              src={search}
+              alt="menu"
+              className="w-6 h-6 absolute left-3 top-1/2 transform -translate-y-1/2"
+            />
             <input
               type="text"
               placeholder="Search products"
@@ -81,7 +86,6 @@ const ProductList = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full p-2 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
           </div>
           
           <select
