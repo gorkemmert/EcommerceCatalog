@@ -34,3 +34,7 @@ This is a responsive and performant e-commerce catalog application built with Re
 ```bash
 git clone https://github.com/your-username/my-ecommerce-catalog.git
 cd my-ecommerce-catalog
+
+
+npm install
+npm run dev
