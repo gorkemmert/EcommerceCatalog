@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 
 export const useFetchProducts = (filters, searchTerm, page, limit) => {
   return useQuery(['products', filters, searchTerm, page, limit], async () => {
-    let query = `http://localhost:5000/products?_start=${limit*(page-1)}&_end=${limit*(page)}`;
+    let query = `https://my-json-server.typicode.com/gorkemmert/db/products?_start=${limit*(page-1)}&_end=${limit*(page)}`;
   
     // Filtreleri ve searchTerm'i sorguya ekliyoruz
     if (filters.category) {
